@@ -1,4 +1,13 @@
 <?php
+require_once 'vendor/autoload.php'; 
+
+$app = new Laravel\Lumen\Application(
+    dirname(__DIR__)
+);
+$app->withFacades();
+
+$app->configure('app');
+// echo '<pre>'; print_r($app); exit;
 /**
  * CodeIgniter
  *

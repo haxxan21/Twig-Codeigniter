@@ -492,9 +492,14 @@ class CI_Loader {
 	 * @return	object|string
 	 */
 	public function view($view, $vars = array(), $return = FALSE)
-	{
-		$view = $view.'.html.twig';
-		$loader = new \Twig\Loader\FilesystemLoader('./application/views');
+	{	
+		$dir = explode('/',$view);
+		$file = $dir[sizeof($dir)-1]; 
+		unset($dir[sizeof($dir)-1]);
+		$dir = implode('/',$dir);
+
+		$view = $file.'.html.twig';
+		$loader = new \Twig\Loader\FilesystemLoader('./application/views/'.$dir);
         $twig = new \Twig\Environment($loader, [
 			'cache' => './application/cache',
 			'auto_reload' => true,

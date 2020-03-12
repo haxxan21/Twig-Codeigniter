@@ -1,4 +1,24 @@
 {% extends "welcome_message.html.twig" %} 
 {% block body %}
 <p>Hello from TWIG template</p>
+<table class="table" style="width:100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for data,key in array_name %}
+    <tr>
+        <td>{{ data + 1 }}</td>
+        <td>{{ key.name }}</td>
+        <td><button class="btn">
+                Delete <span class="badge badge-primary"></span>
+        </button></td>
+    </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

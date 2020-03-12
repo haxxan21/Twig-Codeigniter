@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+require_once ((dirname(__DIR__).'/models/New_model.php'));
+use application\models\New_model;
+use Illuminate\Support\Facades\DB;
 class Welcome extends CI_Controller {
 
 	/**
@@ -18,13 +20,14 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	public function __construct(){
+		parent::__construct();
+	}
+
 	public function index()
 	{
-		$array_name = array(
-			'first' => 'name',
-			'second' => 'age',
-			'third' => 'gender'
-		);
+		$array_name = DB::table('categories')->select('name')->get();
+		$array_name = json_decode(json_encode($array_name), true);
 		$this->load->view('Test_template', ['array_name' => $array_name]);
 	}
 }

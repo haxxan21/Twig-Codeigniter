@@ -7,7 +7,6 @@ $app = new Laravel\Lumen\Application(
 $app->withFacades();
 
 $app->configure('app');
-// echo '<pre>'; print_r($app); exit;
 /**
  * CodeIgniter
  *
